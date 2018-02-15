@@ -1,0 +1,41 @@
+﻿@using LoadMoreMVCSample.Helpers
+@model IEnumerable<LoadMoreMVCSample.Models.Product>
+
+<div class="row">
+    <div class="col-md-10">
+
+        @foreach (var item in Model)
+        {
+
+
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="padding-right: 5px; padding-left: 5px;">
+                <div class="thumbnail">
+                    <h4 class="text-center"><span class="label label-default">@item.ProductName</span></h4>
+                    <p class="text-center" style="font-size: small;">@item.ProductDate.ToLongDateString()</p>
+                    <a href="/Product/Details/@item.ProductId/@item.ProductName"><img src="@item.ProductPicture" alt="@item.ProductName" class="img-responsive"></a>
+
+
+                    <div class="caption">
+                        <div class="row">
+                            <div style="font-size: small;" class="col-md-12 col-xs-12 price">
+
+                                @Html.Raw(item.ProductDescription)
+                                <a href="#">Read more...</a>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <a href="#" class="AddProductBtn btn btn-success" data-id="@item.ProductId" data-price="@item.ProductPrice" data-propic="@item.ProductPicture" data-proname="@item.ProductName" style="width: 100%;"><span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
